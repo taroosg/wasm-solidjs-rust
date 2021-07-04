@@ -1,5 +1,6 @@
 import { render } from 'solid-js/web';
 import { createSignal, createMemo } from 'solid-js';
+// import { sums } from '../lib/wasm_bg.wasm';
 
 function fibonacci(num) {
   if (num <= 1) return 1;
@@ -9,6 +10,7 @@ function fibonacci(num) {
 
 export const Counter = () => {
   const [count, setCount] = createSignal(10);
+  const [value, setValue] = createSignal(0);
   const fib = createMemo(() => fibonacci(count()));
 
   return (
@@ -24,6 +26,13 @@ export const Counter = () => {
       <div>8. {fib()} {fib()} {fib()} {fib()} {fib()}</div>
       <div>9. {fib()} {fib()} {fib()} {fib()} {fib()}</div>
       <div>10. {fib()} {fib()} {fib()} {fib()} {fib()}</div>
+      {/* <input
+        onChange={(e) => {
+          const v = Number(e.currentTarget.value);
+          !isNaN(v) && setValue(sums(v));
+        }}
+      />
+      <p>{value}</p> */}
     </>
   );
 }
