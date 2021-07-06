@@ -1,16 +1,18 @@
 import { render } from 'solid-js/web';
 import { createSignal, createMemo } from 'solid-js';
-import init, { sums } from 'wasm';
+import init, { sums } from "../lib/wasm.js";
+
+const runWasm = async () => {
+  const wasm = await init();
+  const result = sums(24);
+  console.log(result);
+};
+runWasm();
 
 function fibonacci(num) {
   if (num <= 1) return 1;
   return fibonacci(num - 1) + fibonacci(num - 2);
 }
-init();
-// (async () => {
-// const wasm = await init();
-//
-// })();
 
 export const Counter = () => {
   const [count, setCount] = createSignal(10);

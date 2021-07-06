@@ -6,7 +6,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "wasm": "wasm-pack build wasm -d ../src/lib"
+    "wasm": "wasm-pack build --target web wasm -d ../src/lib"
   },
   "license": "MIT",
   "devDependencies": {
